@@ -1,0 +1,615 @@
+/********************    GLOBAL    **********************/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    font-size: 62.5%;
+}
+
+body, main {
+    display: grid;
+    justify-content: center;
+    place-content: center;
+}
+
+body {
+    place-items: center;
+
+    font-family: sans-serif;
+    font-size: 1.4rem;
+
+    background: #555555;
+}
+
+main {
+    border-bottom: 2px solid #2c2c2c;
+}
+
+main, section {
+    max-width: 1024px;
+    margin: 0 auto;
+}
+
+p, span, a {
+    color: white;
+    letter-spacing: 0.120rem;
+}
+
+p {
+    font-family: sans-serif;
+    font-size: 1.6rem;
+}
+
+span {
+    font-size: 1.3rem;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    width: 100%;
+}
+
+:where(a, p, br, span)::selection {
+    background: #a2a2a2cb;
+}
+
+:where(.box-text span, .social-media span)::selection {
+    background: #000;
+}
+
+img::selection {
+    background: transparent;
+}
+
+/********************    Background 3D    **********************/
+section {
+    position: absolute;
+
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.conteiner {
+    position: relative;
+    transform-style: preserve-3d;
+    perspective: 800px;
+}
+
+.conteiner  div:nth-child(1) {
+    width: 100%;
+    height: 50vh;
+    min-height: 250px;
+    max-height: 1000px;
+
+    background: linear-gradient(0deg, #0E0D0D , #525252);
+}
+
+.conteiner  div:nth-child(2) {
+    transform-origin: top;
+    transform: rotateX(70deg);
+
+    height: 100vh;
+    min-height: 250px;
+    max-height: 1000px;
+    background: linear-gradient(180deg, #0E0D0D 25%, #525252 70%, #555555 80%, #757575 95%);
+}
+
+/********************    Carousel Cards    **********************/
+main {
+    margin: 0 auto;
+    max-width: 1024px;
+    height: 100vh;
+}
+
+.swiper-container {
+    overflow: hidden;
+}
+
+.swiper-slide {
+    display: grid;
+    place-items: center;
+    text-align: center;
+
+    perspective: 300px;
+
+    width: 30rem;
+    height: 80rem;
+
+    padding-bottom: 30rem;
+}
+
+.swiper-slide-content {
+    display: grid;
+    place-content: center;
+    text-align: center;
+
+    transform-style: preserve-3d;
+    transform: translateZ(-100px);
+    transition: 700ms ease-in-out;
+
+    position: relative;
+}
+
+.swiper-slide-content.flip {
+    transform: rotateY(180deg) translateZ(40px);
+}
+
+.swiper-slide-content.flip .image:after {
+    box-shadow: 0 -10px 10px rgba(60, 60, 60, 0.5);
+}
+
+.card {
+    display: flex;
+    justify-content: center;
+
+    transform-style: preserve-3d;
+    perspective: 800px;
+    transition: 700ms linear;
+
+    position: relative;
+}
+
+.card .box-text {
+    display: grid;
+    grid-template-rows: 3fr 1fr;
+    justify-content: space-between;
+    place-content: center;
+ 
+    width: 35rem;
+    min-height: 20.5rem;
+
+    background: #3B3B3B;
+    border-radius: .8rem;
+
+    padding: .5rem 1rem;
+    position: absolute;
+}
+
+.box-text :where(blockquote, p, span) {
+    display: grid;
+    place-items: center;
+}
+
+.box-text p {
+    position: relative;
+}
+
+.box-text span {
+    justify-content: end;
+    position: relative;
+    
+    color: #e2e2e2;
+    font-size: 2rem;
+}
+
+.card .back {
+    transform: rotateY(180deg) translateZ(1px);
+}
+
+.image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 25rem;
+    height: auto;
+
+    object-fit: cover;
+
+    position: relative;
+    transform: translateY(200px) translateZ(40px);
+
+    transform-style: preserve-3d;
+    perspective: 800px;
+}
+
+.image:after {
+    content: '';
+    display: block;
+    position: absolute;
+
+    filter: blur(5px);
+
+    width: 25rem;
+    height: 2rem;
+
+    border-radius: 50%;
+    box-shadow: 0 10px 10px rgba(60, 60, 60, 0.5);
+    background: rgba(60, 60, 60, 1);
+
+    transform: rotateX(90deg) translateZ(-250px);
+    transition: 700ms linear;
+}
+
+
+@media (min-width: 700px) {
+
+    p {
+        font-size: 2rem;
+    }
+
+    span {
+        font-size: 1.5rem;
+    }
+}
+
+@media (min-width: 1000px) and (min-height:1000px) {
+    .box-text p {
+        font-size: 3rem;
+    }
+}
+
+@media (max-height: 700px) {
+    .swiper-slide {
+        width: 25rem;
+        height: 100vh;
+    }
+
+    .conteiner  div {
+        height: 50vh;
+    }
+
+    .conteiner  div:nth-child(2) {
+        background: linear-gradient(180deg, #0E0D0D 5%, #525252 40%, #555555, #757575);
+    }
+
+    .card {
+        transform: translateY(100px);
+    }
+
+    .card, image {
+        perspective: 1000px;
+    }
+
+    .swiper-slide-content.flip {
+        transform: rotateY(180deg) translateZ(10px);
+    }
+
+    .swiper-slide-content {
+        transform: translateZ(-10px);
+    }
+
+    .card p {
+        font-size: 1rem;
+    }
+
+    .card span {
+        font-size: 1rem;
+    }
+
+    .card .box-text {
+        width: 20rem;
+        min-height: 10rem;
+    }
+
+    .image {
+        width: 15rem;
+        transform: translateY(200px) translateZ(40px);
+    }
+
+    .image:after {
+        width: 15rem;
+        transform: translateY(180px) translateZ(-10px);
+    }
+}
+
+@media (min-height: 1000px) {
+    .swiper-slide {
+        width: 60rem;
+        height: 100vh;
+    }
+
+    .conteiner div {
+        height: 50vh;
+    }
+
+    .conteiner div:nth-child(2) {
+        background: linear-gradient(180deg, #0E0D0D 5%, #525252 40%, #555555, #757575);
+    }
+
+    .swiper-slide-content.flip {
+        transform: rotateY(180deg) translateZ(50px);
+    }
+
+    .swiper-slide-content {
+        transform: translateZ(-50px);
+    }
+    
+    .card span {
+        font-size: 2.5rem;
+    }
+
+    .card .box-text {
+        width: 60rem;
+        min-height: 30rem;
+    }
+
+    .image {
+        width: 40rem;
+        transform: translateY(290px) translateZ(40px);
+    }
+}
+
+/********************    Footer    **********************/
+footer {
+    position: absolute;
+}
+
+.footer-contain {
+    position: relative;
+}
+
+
+.footer-social-link {
+    transform-style: preserve-3d;
+    perspective: 800px;
+    background: #757575;
+
+    min-height: 300px;
+    max-height: 800px;
+    text-align: center;
+
+    overflow: hidden;
+}
+
+.footer-social-link > div:nth-child(1) {
+    width: 100vw;
+    max-width: 1024px;
+    height: 15rem;
+
+    background: linear-gradient(to bottom,#656565 50%, #454545);
+}
+
+.footer-social-link > div:nth-child(2) {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    place-content: start;
+    grid-row-gap: 5rem;
+
+    width: 100vw;
+    max-width: 1024px;
+    height: auto;
+
+    padding: 5rem 2.5rem;
+    transform: rotateX(0deg);
+    border-top: 2px solid #404040;
+    background: linear-gradient(to top,#656565 50%, #454545);
+}
+
+.social-media {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    place-items: center;
+    column-gap: 7vw;
+
+    min-width: calc(30rem - 2.5rem);
+    transform-style: preserve-3d;
+    perspective: 800px;
+}
+
+.social-media, .copyright {
+    transform: rotateX(70deg);
+}
+
+.social-media a {
+    display: flex;
+    flex-wrap: nowrap;
+    place-items: center;
+
+    gap: .5rem;
+
+    border: 2px solid gray;
+    border-top-width: 3px;
+    border-radius: .8rem;
+
+    cursor: pointer;
+    padding: 1rem;
+
+    transition: 300ms ease-in-out;
+    letter-spacing: 0.05rem;
+
+    -webkit-tap-highlight-color: transparent;
+    tap-highlight-color: transparent;
+}
+
+.social-media a:hover {
+    background: gray;
+    transform: scale(1.1);
+    border-color: white;
+    border-top-width: 2px;
+}
+
+.social-media a:hover svg {
+    fill: #323232;
+}
+
+.social-media a span {
+    font-family: sans-serif;
+    font-size: 2rem;
+    font-weight: 300;
+
+    cursor: pointer;
+}
+
+.social-media a span, .copyright {
+    letter-spacing: .05rem;
+}
+
+.copyright {
+    font-size: 2rem;
+}
+
+.social-media .external-link img {
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+svg {
+    fill: #c0c0c0;
+    transition: 300ms ease-in-out;
+}
+
+@media (max-width: 460px) {
+    .footer-social-link > div:nth-child(2) {
+        grid-row-gap: .5rem;
+        padding: 2rem 2.5rem;
+    }
+
+    .social-media {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .social-media a {
+        width: min-content;
+    }
+}
+
+@media (min-width: 700px) {
+    .social-media a span {
+        font-size: 3rem;
+    }
+
+    .copyright {
+        font-size: 2.5rem;
+    }
+}
+
+.footer-social-image {
+    position: absolute;
+
+    top: -50px;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-content: center;
+    align-items: center;
+
+    perspective: 100rem;
+    perspective-origin: 1rem -20rem;
+
+    width: 100vw;
+    max-width: 102.4rem;
+    min-width: 30rem;
+    margin: 0 auto;
+    height: 25rem;
+
+
+    transform: translateZ(-100px);
+}
+
+.cube {
+    position: relative;
+    transform-style: preserve-3d;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    animation: animate 15s linear infinite;
+
+    cursor: pointer;
+}
+
+.cube :where(.top , .bottom , .left , .right , .front , .back) {
+    top: 0;
+    bottom: 0;
+
+    height: 5rem;
+    width: 5rem;
+
+    filter: opacity(80%);
+
+    position: absolute;
+    background: #000;
+    transition: 700ms ease-in-out;
+}
+
+.cube .front {
+    transform: translateZ(2.5rem);
+}
+
+.cube .back {
+    transform: translateZ(-2.5rem);
+}
+
+.top {
+    transform: translateY(-2.5rem) rotateX(90deg);
+}
+
+.bottom {
+    transform: translateY(2.5rem) rotateX(90deg);
+}
+
+.right {
+    transform: translateX(2.5rem) rotateY(90deg);
+}
+
+.left {
+    transform: translateX(-2.5rem) rotateY(90deg);
+}
+
+
+/********************    Hover Effect Cube    **********************/
+.cube:hover .front {
+    transform: translateZ(4rem);
+}
+
+.cube:hover .back {
+    transform: translateZ(-4rem);
+}
+
+.cube:hover .top {
+    transform: translateY(-4rem) rotateX(90deg);
+}
+
+.cube:hover .bottom {
+    transform: translateY(4rem) rotateX(90deg);
+}
+
+.cube:hover .right {
+    transform: translateX(4rem) rotateY(90deg);
+}
+
+.cube:hover .left {
+    transform: translateX(-4rem) rotateY(90deg);
+}
+
+.shadow {
+    bottom: -12rem;
+    filter: blur(5px);
+
+    width: 4rem;
+    height: 4rem;
+
+    position: absolute;
+
+    border-radius: 10%;
+    background: rgba(60, 60, 60, 1);
+    box-shadow: 0 10px 10px rgba(60, 60, 60, 0.5);
+
+    transform: translateY(1rem) rotateX(90deg);
+    transition: 700ms ease-in-out;
+}
+
+.cube:hover .shadow {
+    width: 4.5rem;
+    height: 4.5rem;
+}
+
+@keyframes animate {
+    to {
+        transform: rotateY(360deg);
+    }
+}
