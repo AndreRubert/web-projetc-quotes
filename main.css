@@ -172,7 +172,7 @@ main {
     background: #3B3B3B;
     border-radius: .8rem;
 
-    padding: .5rem 1rem;
+    padding: 2rem 2.5rem;
     position: absolute;
 }
 
@@ -182,6 +182,7 @@ main {
 }
 
 .box-text p {
+    justify-content: ;
     position: relative;
 }
 
@@ -190,7 +191,7 @@ main {
     position: relative;
     
     color: #e2e2e2;
-    font-size: 2rem;
+    font-size: 1.5rem;
 }
 
 .card .back {
@@ -234,7 +235,6 @@ main {
 
 
 @media (min-width: 700px) {
-
     p {
         font-size: 2rem;
     }
