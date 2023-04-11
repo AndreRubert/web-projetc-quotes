@@ -23,11 +23,3 @@ for (let card of cards) {
     card.classList.toggle('flip');
   });
 }
-
-
-//let card = document.querySelectorAll(".swiper-slide-content");
-
-//card.addEventListener('click', (e) => {
-//    card.classList.toggle('flip')
-//});
-//
